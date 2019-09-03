@@ -111,7 +111,6 @@ ext.deps = [
 subprojects {
     apply plugin: 'java' //java插件
     apply plugin: 'net.ltgt.errorprone' //错误检查插件
-    apply plugin: 'org.springframework.boot' //springboot 插件
 
     // 所有子项目使用父项目的版本号
     version = rootProject.version

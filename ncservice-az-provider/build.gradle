@@ -1,5 +1,5 @@
 apply plugin: 'distribution' //打包插件
-
+apply plugin: 'org.springframework.boot' //springboot 插件
 
 dependencies {
     compile(project(':ncservice-az-common'))
