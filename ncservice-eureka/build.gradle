@@ -1,0 +1,7 @@
+apply plugin: 'distribution' //打包插件
+
+
+dependencies {
+    compile(project(':ncservice-az-common'))
+    compile deps.guava
+}

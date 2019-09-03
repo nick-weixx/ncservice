@@ -1,0 +1,22 @@
+dependencies {
+    compile deps.guava
+    compile deps.gson
+    compile deps.httpclient
+    compile deps.mysqlConnector
+//    compileOnly deps.hadoopAnnotations
+//    compileOnly deps.hadoopAuth
+//    compileOnly deps.hadoopCommon
+//    compileOnly deps.hadoopHdfs
+
+//    testCompile deps.hadoopAnnotations
+//    testCompile deps.hadoopAuth
+//    testCompile deps.hadoopCommon
+//    testCompile deps.hadoopHdfs
+//    testCompile project(':test')
+//    testCompile project(path: ':azkaban-db', configuration: 'testOutput')
+}
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

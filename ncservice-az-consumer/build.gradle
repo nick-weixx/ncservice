@@ -1,0 +1,33 @@
+apply plugin: 'distribution' //打包插件
+
+
+dependencies {
+    compile(project(':ncservice-az-common'))
+    compile deps.guava
+}
+
+
+distributions {
+    main {
+        contents {
+            from('src/main/bash') {
+                into 'bin'
+                fileMode = 0755
+            }
+//            from('../azkaban-common/src/main/bash') {
+//                into 'bin'
+//                fileMode = 0755
+//            }
+
+            //依赖的jar包
+            from(configurations.runtime) {
+                into 'lib'
+            }
+
+            // 本身的jar包
+            from(jar) {
+                into 'lib'
+            }
+        }
+    }
+}
