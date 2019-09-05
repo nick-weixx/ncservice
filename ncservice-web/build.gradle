@@ -1,16 +1,35 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'org.springframework.boot' //springboot 插件
+apply plugin: "io.spring.dependency-management" //省略版spring版本号插件
 
-group 'com.nick.weixx.cloud'
-version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:"+springCloudVersion
 
-repositories {
-    mavenCentral()
+    }
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile deps.springActuator
+    compile deps.springCloudSleuth
+    compile deps.springCloudHystrix
+    compile deps.springZuul
+    compile deps.springCloudEureka
+}
+
+/**
+ * 依赖springboot 的zip打包任务,如果所有子项目都需要，提取到父配置文件的subprojects中
+ */
+task bootRepackageZip(type: Zip, dependsOn: bootRepackage) {
+    classifier = 'buildreport'
+    description ="springboot 打成zip包" //任务描述 gradle tasks --all
+    destinationDir= file("$buildDir/libs/zip") //生成文件存放的路径
+    from('src/main/bash') {
+        into 'bin'
+        fileMode = 0755
+    }
+
+    from(jar) {
+        into 'lib'
+    }
 }

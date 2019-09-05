@@ -107,17 +107,19 @@ ext.deps = [
         //sprint-boot test 测试框架
         springTest      : 'org.springframework.boot:spring-boot-starter-test',
         //spring-cloud zuul 路由配置
-        springZuul      : 'org.springframework.boot:spring-boot-starter-zuul',
+        springZuul      : 'org.springframework.cloud:spring-cloud-starter-zuul',
 
         //sprint-cloud eureka 分布式服务
         springCloudEureka    : 'org.springframework.cloud:spring-cloud-starter-eureka',
+        springCloudEurekaServer : 'org.springframework.cloud:spring-cloud-starter-eureka-server',
         //sprint-cloud sleuth 请求跟踪
         springCloudSleuth    : 'org.springframework.cloud:spring-cloud-starter-sleuth',
-        //spring-cloud hystrix 断路器
-        springCloudHystrix   : 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard',
+        //spring-cloud hystrix 断路器监控
+        springCloudHystrix   : 'org.springframework.cloud:spring-cloud-starter-hystrix',
+        springCloudHystrixDash   : 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard',
         //spring-cloud feign 封装后的ribbon 负载服务
-        springCloudFeign     : 'org.springframework.cloud:spring-cloud-starter-feign',
-        springCloudEurekaServer : 'org.springframework.cloud:spring-cloud-starter-eureka-server'
+        springCloudFeign     : 'org.springframework.cloud:spring-cloud-starter-feign'
+
 ]
 
 //子项目配置,所有子项目都会引用到

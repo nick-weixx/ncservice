@@ -1,0 +1,43 @@
+server:
+  port: 8030
+spring:
+  application:
+    name: ncservice-web
+  http:
+    multipart: ##文件传输设置
+      maxFileSize: 2000Mb      # Max file size，默认1M
+      maxRequestSize: 2500Mb   # Max request size，默认10M
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  host:
+    socket-timeout-millis: 30000
+    connect-timeout-millis: 30000
+  ignored-services: '*'   # 使用'*'可忽略所有微服务
+  routes:
+    ncservice-az-consumer: /consumer/**
+    ncservice-az-proviter: /azkaban/**
+
+##(ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1)
+##负载均衡
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  
+##hystrix.timeoutInMilliseconds>ribbon.ConnectTimeout
+##断路器响应时间
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000

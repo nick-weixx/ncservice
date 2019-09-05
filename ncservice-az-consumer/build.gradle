@@ -1,33 +1,37 @@
-apply plugin: 'distribution' //打包插件
+apply plugin: 'org.springframework.boot' //springboot 插件
+apply plugin: "io.spring.dependency-management" //省略版spring版本号插件
 
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:"+springCloudVersion
+
+    }
+}
 
 dependencies {
     compile(project(':ncservice-az-common'))
-    compile deps.guava
+    compile deps.springStarterWeb
+    compile deps.springActuator
+    compile deps.springCloudHystrix
+    compile deps.springCloudEureka
+    compile deps.springCloudFeign
+    compile deps.springCloudSleuth
 }
 
+/**
+ * 依赖springboot 的zip打包任务,如果所有子项目都需要，提取到父配置文件的subprojects中
+ */
+task bootRepackageZip(type: Zip, dependsOn: bootRepackage) {
+    classifier = 'buildreport'
+    description ="springboot 打成zip包" //任务描述 gradle tasks --all
+    destinationDir= file("$buildDir/libs/zip") //生成文件存放的路径
+    from('src/main/bash') {
+        into 'bin'
+        fileMode = 0755
+    }
 
-distributions {
-    main {
-        contents {
-            from('src/main/bash') {
-                into 'bin'
-                fileMode = 0755
-            }
-//            from('../azkaban-common/src/main/bash') {
-//                into 'bin'
-//                fileMode = 0755
-//            }
-
-            //依赖的jar包
-            from(configurations.runtime) {
-                into 'lib'
-            }
-
-            // 本身的jar包
-            from(jar) {
-                into 'lib'
-            }
-        }
+    from(jar) {
+        into 'lib'
     }
 }

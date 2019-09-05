@@ -1,0 +1,42 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: ncservice-az-consumer
+  http:
+    multipart:
+      maxFileSize: 2000Mb      # Max file size，默认1M
+      maxRequestSize: 2500Mb   # Max request size，默认10M
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/
+  instance:
+    prefer-ip-address: true
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+##断路器超时时间
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 220000
+
+logging:
+  level:
+    root: INFO
+    org.springframework.cloud.sleuth: DEBUG
+    # org.springframework.web.servlet.DispatcherServlet: DEBUG
+             
+# 说明：请务必注意，在Spring Cloud Dalston中，Feign默认是不开启Hystrix的。
+# 因此，如使用Dalston请务必额外设置属性：feign.hystrix.enabled=true，否则断路器不会生效。
+# 而，Spring Cloud Angel/Brixton/Camden中，Feign默认都是开启Hystrix的。无需设置该属性。

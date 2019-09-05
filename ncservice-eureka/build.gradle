@@ -12,6 +12,23 @@ dependencyManagement {
 
 dependencies {
     compile(project(':ncservice-az-common'))
-    compile deps.springCloudHystrix
+    compile deps.springCloudHystrixDash
     compile deps.springCloudEurekaServer
+}
+
+/**
+ * 依赖springboot 的zip打包任务
+ */
+task bootRepackageZip(type: Zip, dependsOn: bootRepackage) {
+    classifier = 'buildreport'
+    description ="springboot 打成zip包" //任务描述 gradle tasks --all
+    destinationDir= file("$buildDir/libs/zip") //生成文件存放的路径
+    from('src/main/bash') {
+        into 'bin'
+        fileMode = 0755
+    }
+
+    from(jar) {
+        into 'lib'
+    }
 }

@@ -10,3 +10,8 @@ eureka:
     ##Eureka服务端在收到砓后 一 次心跳之后等待的时间上限， 单位为秒。 超出剔除服务
       leaseExpirationDurationlnSeconds: 90
     ##enable-self-preservation: false ##关闭自我保护机制
+
+management:
+   ## 权限控制
+   security:
+     enabled: false
