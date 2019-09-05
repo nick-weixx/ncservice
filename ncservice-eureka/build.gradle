@@ -1,7 +1,17 @@
-apply plugin: 'distribution' //打包插件
+apply plugin: 'org.springframework.boot' //springboot 插件
+apply plugin: "io.spring.dependency-management" //省略版spring版本号插件
+
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:"+springCloudVersion
+
+    }
+}
 
 
 dependencies {
     compile(project(':ncservice-az-common'))
-    compile deps.guava
+    compile deps.springCloudHystrix
+    compile deps.springCloudEurekaServer
 }

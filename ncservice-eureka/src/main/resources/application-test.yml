@@ -1,0 +1,12 @@
+server:
+  port: 8761                    # 指定该Eureka实例的端口
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+    ##Eureka服务端在收到砓后 一 次心跳之后等待的时间上限， 单位为秒。 超出剔除服务
+      leaseExpirationDurationlnSeconds: 90
+    ##enable-self-preservation: false ##关闭自我保护机制

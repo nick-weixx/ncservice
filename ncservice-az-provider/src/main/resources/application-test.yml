@@ -1,0 +1,52 @@
+server:
+  port: 8000
+spring:
+  application:
+#    name: 'az-proviter'
+    name: '@project.artifactId@' ##使用maven变量设置app名称
+  datasource:                           # 指定数据源
+    url: jdbc:mysql://localhost:3306/ncservice-az
+    username: root
+    password: weixingxing
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+logging:                                # 配置日志级别，让hibernate打印出执行的SQL
+  level:
+    root: INFO
+    com.nick.weixx.cloud.az.provider.dao: DEBUG
+    org.springframework.cloud.sleuth: DEBUG
+#    com.apache.ibatis: TRACE
+#    java.sql.Connection: DEBUG
+#    java.sql.Statement: DEBUG
+#    java.sql.PreparedStatement: DEBUG
+
+
+
+
+eureka:
+  client: ## 每隔30秒拉取服务注册信息
+    registry-fetch-interval-seconds: 30
+    ##变量的使用
+    statusPageUrl:  ${management.contextPath}/info
+    healthCheckUrlPath: ${management.contextPath}/health
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+  ##客户端向服务端发送心跳的时间间隔， 单位为秒
+    leaseRenewallntervallnSeconds: 20
+    prefer-ip-address: true
+    metadataMap: ##自定义元数据
+      auther: nick
+      desc: user provider
+    info:
+      app:
+        name:  '@project.artifactId@'
+        version: 0.0.1-SNAPSHOT
+
+
+management:
+   contextPath: /actuator
+   ## 权限控制
+   security:
+     enabled: false
