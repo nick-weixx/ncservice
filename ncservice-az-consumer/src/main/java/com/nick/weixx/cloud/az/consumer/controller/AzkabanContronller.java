@@ -1,7 +1,7 @@
-package com.nick.weixx.cloud.az.provider.controller;
+package com.nick.weixx.cloud.az.consumer.controller;
 
-import com.nick.weixx.cloud.az.provider.entity.Projects;
-import com.nick.weixx.cloud.az.provider.service.IProjectsService;
+import com.nick.weixx.cloud.az.consumer.feign.AzProviderFeignClient;
+import com.nick.weixx.cloud.az.entity.Projects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,14 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("projects")
-public class ProjectsContronller {
+@RequestMapping("az")
+public class AzkabanContronller {
     @Autowired
-    IProjectsService proService;
-
-    @GetMapping("/all")
+    AzProviderFeignClient azProviderClient;
+    @GetMapping("/project/all")
     public List<Projects> getAllProjects() {
-        return proService.getAllProjects();
+        return azProviderClient.getAllProjects();
     }
-
 }

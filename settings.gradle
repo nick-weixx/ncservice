@@ -4,4 +4,5 @@ include 'ncservice-az-consumer'
 include 'ncservice-eureka'
 include 'ncservice-web'
 include 'ncservice-az-common'
+include 'ncservice-az-model'
 

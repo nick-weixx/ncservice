@@ -1,6 +1,6 @@
 package com.nick.weixx.cloud.az.provider.service;
 
-import com.nick.weixx.cloud.az.provider.entity.Projects;
+import com.nick.weixx.cloud.az.entity.Projects;
 
 import java.util.List;
 

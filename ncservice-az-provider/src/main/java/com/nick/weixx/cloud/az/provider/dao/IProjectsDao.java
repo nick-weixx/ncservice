@@ -1,6 +1,6 @@
 package com.nick.weixx.cloud.az.provider.dao;
 
-import com.nick.weixx.cloud.az.provider.entity.Projects;
+import com.nick.weixx.cloud.az.entity.Projects;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;

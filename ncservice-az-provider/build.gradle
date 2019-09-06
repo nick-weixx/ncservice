@@ -13,6 +13,7 @@ dependencyManagement {
 
 dependencies {
     compile(project(':ncservice-az-common'))
+    compile(project(':ncservice-az-model'))
     compile deps.guava
     compile deps.springStarterWeb
 //    compile deps.springDataJpa

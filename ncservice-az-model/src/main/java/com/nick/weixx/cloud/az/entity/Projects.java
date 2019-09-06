@@ -1,4 +1,4 @@
-package com.nick.weixx.cloud.az.provider.entity;
+package com.nick.weixx.cloud.az.entity;
 
 
 import java.io.Serializable;

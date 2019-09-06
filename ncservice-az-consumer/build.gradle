@@ -11,6 +11,7 @@ dependencyManagement {
 
 dependencies {
     compile(project(':ncservice-az-common'))
+    compile(project(':ncservice-az-model'))
     compile deps.springStarterWeb
     compile deps.springActuator
     compile deps.springCloudHystrix
