@@ -5,9 +5,9 @@ version '1.0.0'
 //插件资源库设置
 buildscript {
 
-    ext{
-        springbootVersion='1.5.9.RELEASE'
-        springCloudVersion='Edgware.RELEASE'
+    ext {
+        springbootVersion = '1.5.9.RELEASE'
+        springCloudVersion = 'Edgware.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -21,7 +21,7 @@ buildscript {
     dependencies {
         classpath 'com.cinnober.gradle:semver-git:2.2.3'
         classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.14' //error-prone google代码分析器
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:"+springbootVersion)//用来打springboot jar
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:" + springbootVersion)//用来打springboot jar
     }
 
 
@@ -44,24 +44,25 @@ ext.versions = [
         hive   : '1.1.0-cdh5.15.2',
         restli : '1.15.7',
         slf4j  : '1.7.18',
-        mybatis: '1.3.5'
+        mybatis: '1.3.5',
+        lombok : '1.18.6'
 
 ]
 
 //引用变量
 ext.deps = [
-        assertj         : 'org.assertj:assertj-core:3.8.0',
-        awaitility      : 'org.awaitility:awaitility:3.0.0',
-        collections     : 'commons-collections:commons-collections:3.2.2',
-        commonsCli      : 'commons-cli:commons-cli:1.3.1',
-        commonsLang     : 'commons-lang:commons-lang:2.6',
-        commonsCompress : 'org.apache.commons:commons-compress:1.16.1',
-        dbcp2           : 'org.apache.commons:commons-dbcp2:2.1.1',
-        dbutils         : 'commons-dbutils:commons-dbutils:1.5',
-        fileupload      : 'commons-fileupload:commons-fileupload:1.2.1',
-        gson            : 'com.google.code.gson:gson:2.8.1',
-        guava           : 'com.google.guava:guava:21.0',
-        guice           : 'com.google.inject:guice:4.1.0',
+        assertj                : 'org.assertj:assertj-core:3.8.0',
+        awaitility             : 'org.awaitility:awaitility:3.0.0',
+        collections            : 'commons-collections:commons-collections:3.2.2',
+        commonsCli             : 'commons-cli:commons-cli:1.3.1',
+        commonsLang            : 'commons-lang:commons-lang:2.6',
+        commonsCompress        : 'org.apache.commons:commons-compress:1.16.1',
+        dbcp2                  : 'org.apache.commons:commons-dbcp2:2.1.1',
+        dbutils                : 'commons-dbutils:commons-dbutils:1.5',
+        fileupload             : 'commons-fileupload:commons-fileupload:1.2.1',
+        gson                   : 'com.google.code.gson:gson:2.8.1',
+        guava                  : 'com.google.guava:guava:21.0',
+        guice                  : 'com.google.inject:guice:4.1.0',
 //        h2                  : 'com.h2database:h2:1.4.193',
 //        hadoopAnnotations   : "org.apache.hadoop:hadoop-annotations:" + versions.hadoop,
 //        hadoopAuth          : "org.apache.hadoop:hadoop-auth:" + versions.hadoop,
@@ -72,53 +73,54 @@ ext.deps = [
 //        hiveCli             : "org.apache.hive:hive-cli:" + versions.hive,
 //        hiveExecCore        : "org.apache.hive:hive-exec:" + versions.hive + ":core",
 //        hiveMetastore       : "org.apache.hive:hive-metastore:" + versions.hive,
-        httpclient      : 'org.apache.httpcomponents:httpclient:4.5.3',
-        io              : 'commons-io:commons-io:2.4',
-        jacksonCoreAsl  : 'org.codehaus.jackson:jackson-core-asl:1.9.5',
-        jacksonMapperAsl: 'org.codehaus.jackson:jackson-mapper-asl:1.9.5',
-        jexl            : 'org.apache.commons:commons-jexl:2.1.1',
-        jodaTime        : 'joda-time:joda-time:2.0',
-        jopt            : 'net.sf.jopt-simple:jopt-simple:4.3',
-        jsr305          : 'com.google.code.findbugs:jsr305:3.0.2',
-        junit           : 'junit:junit:4.12',
-        log4j           : 'log4j:log4j:1.2.17',
-        mail            : 'javax.mail:mail:1.4.5',
-        math3           : 'org.apache.commons:commons-math3:3.0',
-        mockito         : 'org.mockito:mockito-core:2.10.0',
-        mysqlConnector  : 'mysql:mysql-connector-java:5.1.28',
-        parquetAvro     : 'com.twitter:parquet-avro:1.3.2',
-        parquetBundle   : 'com.twitter:parquet-hadoop-bundle:1.3.2',
-        quartz          : 'org.quartz-scheduler:quartz:2.2.1',
-        slf4j           : 'org.slf4j:slf4j-api:' + versions.slf4j,
-        slf4jLog4j      : 'org.slf4j:slf4j-log4j12:' + versions.slf4j,
-        sparkCore       : 'org.apache.spark:spark-core_2.10:1.4.0',
-        snakeyaml       : 'org.yaml:snakeyaml:1.18',
-        velocity        : 'org.apache.velocity:velocity:1.7',
-        velocityTools   : 'org.apache.velocity:velocity-tools:2.0',
-        druid           : 'com.alibaba:druid:1.0.18',
+        httpclient             : 'org.apache.httpcomponents:httpclient:4.5.3',
+        io                     : 'commons-io:commons-io:2.4',
+        jacksonCoreAsl         : 'org.codehaus.jackson:jackson-core-asl:1.9.5',
+        jacksonMapperAsl       : 'org.codehaus.jackson:jackson-mapper-asl:1.9.5',
+        jexl                   : 'org.apache.commons:commons-jexl:2.1.1',
+        jodaTime               : 'joda-time:joda-time:2.0',
+        jopt                   : 'net.sf.jopt-simple:jopt-simple:4.3',
+        jsr305                 : 'com.google.code.findbugs:jsr305:3.0.2',
+        junit                  : 'junit:junit:4.12',
+        log4j                  : 'log4j:log4j:1.2.17',
+        mail                   : 'javax.mail:mail:1.4.5',
+        math3                  : 'org.apache.commons:commons-math3:3.0',
+        mockito                : 'org.mockito:mockito-core:2.10.0',
+        mysqlConnector         : 'mysql:mysql-connector-java:5.1.28',
+        parquetAvro            : 'com.twitter:parquet-avro:1.3.2',
+        parquetBundle          : 'com.twitter:parquet-hadoop-bundle:1.3.2',
+        quartz                 : 'org.quartz-scheduler:quartz:2.2.1',
+        slf4j                  : 'org.slf4j:slf4j-api:' + versions.slf4j,
+        slf4jLog4j             : 'org.slf4j:slf4j-log4j12:' + versions.slf4j,
+        sparkCore              : 'org.apache.spark:spark-core_2.10:1.4.0',
+        snakeyaml              : 'org.yaml:snakeyaml:1.18',
+        velocity               : 'org.apache.velocity:velocity:1.7',
+        velocityTools          : 'org.apache.velocity:velocity-tools:2.0',
+        druid                  : 'com.alibaba:druid:1.0.18',
         //spring-boot web服务
-        springStarterWeb: 'org.springframework.boot:spring-boot-starter-web',
+        springStarterWeb       : 'org.springframework.boot:spring-boot-starter-web',
         // spring-boot jpa
-        springDataJpa   : 'org.springframework.boot:spring-boot-starter-data-jpa',
+        springDataJpa          : 'org.springframework.boot:spring-boot-starter-data-jpa',
         //spring-boot mybatis
-        springMybatis   : 'org.mybatis.spring.boot:mybatis-spring-boot-starter:' + versions.mybatis,
+        springMybatis          : 'org.mybatis.spring.boot:mybatis-spring-boot-starter:' + versions.mybatis,
         //spring-boot actuator 基础服务监控
-        springActuator  : 'org.springframework.boot:spring-boot-starter-actuator',
+        springActuator         : 'org.springframework.boot:spring-boot-starter-actuator',
         //sprint-boot test 测试框架
-        springTest      : 'org.springframework.boot:spring-boot-starter-test',
+        springTest             : 'org.springframework.boot:spring-boot-starter-test',
         //spring-cloud zuul 路由配置
-        springZuul      : 'org.springframework.cloud:spring-cloud-starter-zuul',
+        springZuul             : 'org.springframework.cloud:spring-cloud-starter-zuul',
 
         //sprint-cloud eureka 分布式服务
-        springCloudEureka    : 'org.springframework.cloud:spring-cloud-starter-eureka',
-        springCloudEurekaServer : 'org.springframework.cloud:spring-cloud-starter-eureka-server',
+        springCloudEureka      : 'org.springframework.cloud:spring-cloud-starter-eureka',
+        springCloudEurekaServer: 'org.springframework.cloud:spring-cloud-starter-eureka-server',
         //sprint-cloud sleuth 请求跟踪
-        springCloudSleuth    : 'org.springframework.cloud:spring-cloud-starter-sleuth',
+        springCloudSleuth      : 'org.springframework.cloud:spring-cloud-starter-sleuth',
         //spring-cloud hystrix 断路器监控
-        springCloudHystrix   : 'org.springframework.cloud:spring-cloud-starter-hystrix',
-        springCloudHystrixDash   : 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard',
+        springCloudHystrix     : 'org.springframework.cloud:spring-cloud-starter-hystrix',
+        springCloudHystrixDash : 'org.springframework.cloud:spring-cloud-starter-hystrix-dashboard',
         //spring-cloud feign 封装后的ribbon 负载服务
-        springCloudFeign     : 'org.springframework.cloud:spring-cloud-starter-feign'
+        springCloudFeign       : 'org.springframework.cloud:spring-cloud-starter-feign',
+        lombok                 : 'org.projectlombok:lombok:' + ext.versions.lombok
 
 ]
 
@@ -129,13 +131,12 @@ subprojects {
 
     // 所有子项目使用父项目的版本号
     version = rootProject.version
-        //TODO
+    //TODO
 //    configurations.errorprone {
 //        dependencies { //多引用error 检查包
 //            errorprone 'com.google.errorprone:error_prone_core:2.1.0'
 //        }
 //    }
-
 
     /**
      * java插件
@@ -158,6 +159,7 @@ subprojects {
         //子项目公共包
         dependencies {
             compile deps.guava
+            compile deps.lombok
 //            compile deps.log4j
 //            compile deps.guice
 //            compile deps.slf4j

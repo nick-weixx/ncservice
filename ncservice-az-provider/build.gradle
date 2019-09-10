@@ -16,11 +16,12 @@ dependencies {
     compile(project(':ncservice-az-model'))
     compile deps.guava
     compile deps.springStarterWeb
+//    compile deps.druid
 //    compile deps.springDataJpa
     compile deps.springActuator
     compile deps.springTest
-    compile deps.druid
-    compile deps.springMybatis
+
+//    compile deps.springMybatis
     compile deps.springCloudEureka
     compile deps.springCloudSleuth
 

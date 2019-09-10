@@ -3,7 +3,7 @@ package com.nick.weixx.cloud.az.consumer.feign;
 import com.nick.weixx.cloud.az.entity.Projects;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,9 @@ import java.util.List;
 @FeignClient(name = "ncservice-az-proviter", fallback = FeignClientFallback.class)
 public interface AzProviderFeignClient {
 //    @RequestMapping(method = RequestMethod.GET)
-    @GetMapping("/az/project/all")
-    public List<Projects> getAllProjects();
+//    @RequestMapping("/az/project/create")
+    @RequestMapping(method=RequestMethod.POST,path ="/az/project/create")
+    public String createProject(@RequestParam("name") String name, @RequestParam("description") String description);
 }
 
 /**
@@ -22,8 +23,7 @@ public interface AzProviderFeignClient {
 class FeignClientFallback implements AzProviderFeignClient {
 
     @Override
-    public List<Projects> getAllProjects() {
-        List<Projects> pros = new ArrayList<>();
-        return pros;
+    public String createProject(String name, String description) {
+        return null;
     }
 }

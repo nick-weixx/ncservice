@@ -14,6 +14,9 @@ dependencies {
     compile(project(':ncservice-az-model'))
     compile deps.springStarterWeb
     compile deps.springActuator
+    compile deps.springMybatis
+    compile deps.druid
+    compile deps.springDataJpa
     compile deps.springCloudHystrix
     compile deps.springCloudEureka
     compile deps.springCloudFeign

@@ -1,10 +1,18 @@
 package com.nick.weixx.cloud.az.provider.service;
 
-import com.nick.weixx.cloud.az.entity.Projects;
-
-import java.util.List;
+import java.io.File;
 
 public interface IProjectsService {
 
-    public List<Projects> getAllProjects();
+    /**
+     * 创建project
+     * @param name
+     * @param description
+     * @return
+     */
+    public String createProject( String name,String description);
+    public String deleteProject(String name);
+    public String uploadZip(String project, File file);
+
+//    public List<Projects> getAllProjects();
 }

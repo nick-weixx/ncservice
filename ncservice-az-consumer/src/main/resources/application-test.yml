@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: ncservice-az-consumer
+  datasource:                           # 指定数据源
+    url: jdbc:mysql://localhost:3306/ncservice-az
+    username: root
+    password: weixingxing
+    driver-class-name: com.mysql.jdbc.Driver
   http:
     multipart:
       maxFileSize: 2000Mb      # Max file size，默认1M
@@ -35,6 +40,7 @@ logging:
   level:
     root: INFO
     org.springframework.cloud.sleuth: DEBUG
+    #com.nick.weixx.cloud.az.consumer.dao: DEBUG
     # org.springframework.web.servlet.DispatcherServlet: DEBUG
              
 # 说明：请务必注意，在Spring Cloud Dalston中，Feign默认是不开启Hystrix的。

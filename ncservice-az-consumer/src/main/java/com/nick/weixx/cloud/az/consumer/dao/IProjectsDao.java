@@ -1,4 +1,4 @@
-package com.nick.weixx.cloud.az.provider.dao;
+package com.nick.weixx.cloud.az.consumer.dao;
 
 import com.nick.weixx.cloud.az.entity.Projects;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +12,6 @@ import java.util.List;
  * azkaban projects find
  */
 @Mapper
-
 public interface IProjectsDao {
 
     @Select("select name,active,last_modified_by from projects")
